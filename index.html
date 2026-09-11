@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <title>PropGuard â€” Prop firm risk &amp; lot calculator (Windows)</title>
+  <meta name="description" content="Windows desktop app for prop traders. Live read-only MT5 drawdown room, lot size capped by remaining daily DD. Offline calculators always work. $29 one-time." />
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --card: #121821;
+      --line: #1e2836;
+      --text: #e8eef7;
+      --muted: #93a0b4;
+      --cyan: #2dd4bf;
+      --gold: #eab308;
+      --danger: #f87171;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, Segoe UI, system-ui, sans-serif;
+      background: radial-gradient(1200px 600px at 20% -10%, #14303a 0%, transparent 55%), var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    a { color: var(--cyan); }
+    .wrap { width: min(960px, 92vw); margin: 0 auto; }
+    header { padding: 28px 0 8px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-weight: 800; letter-spacing: 0.02em; }
+    .logo span { color: var(--cyan); }
+    .badge {
+      font-size: 12px; color: var(--muted); border: 1px solid var(--line);
+      padding: 6px 10px; border-radius: 999px;
+    }
+    .hero { padding: 48px 0 28px; }
+    h1 { font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.15; margin: 0 0 14px; }
+    .lead { color: var(--muted); font-size: 1.1rem; max-width: 58ch; }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; align-items: center; }
+    .btn {
+      display: inline-block; background: var(--cyan); color: #042f2e; font-weight: 800;
+      text-decoration: none; padding: 14px 22px; border-radius: 12px;
+    }
+    .btn:hover { filter: brightness(1.05); }
+    .price { color: var(--gold); font-weight: 700; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin: 36px 0; }
+    .card {
+      background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px;
+    }
+    .card h3 { margin: 0 0 8px; font-size: 1rem; }
+    .card p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+    .shots { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 18px 0 40px; }
+    .shot {
+      aspect-ratio: 16/10; border-radius: 16px; border: 1px dashed #334155;
+      background: #0f172a; color: #64748b; display: grid; place-items: center; text-align: center; padding: 16px;
+    }
+    details { border-top: 1px solid var(--line); padding: 14px 0; }
+    details:first-of-type { border-top: 0; }
+    summary { cursor: pointer; font-weight: 650; }
+    details p { color: var(--muted); margin: 8px 0 0; }
+    footer {
+      border-top: 1px solid var(--line); color: var(--muted); font-size: 0.85rem;
+      padding: 24px 0 40px; margin-top: 20px;
+    }
+    @media (max-width: 700px) { .shots { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">Prop<span>Guard</span></div>
+      <div class="badge">Windows Â· $29 one-time</div>
+    </header>
+
+    <section class="hero">
+      <h1>Stop blowing prop challenges on daily DD â€” while MT5 still says you have margin.</h1>
+      <p class="lead">
+        PropGuard is a Windows desktop app for prop firm traders. It attaches read-only to the MT5 account
+        already logged in on your PC, shows remaining daily drawdown room from live equity, and caps lot size
+        against that room. Offline calculators always work â€” even with MT5 closed.
+      </p>
+      <div class="cta-row">
+        <a class="btn" href="YOUR_STRIPE_PAYMENT_LINK">Get PropGuard â€” $29</a>
+        <span class="price">One-time Â· Windows .exe Â· No subscription</span>
+      </div>
+    </section>
+
+    <section class="grid" aria-label="Features">
+      <article class="card">
+        <h3>Live MT5 room</h3>
+        <p>Read-only attach to your logged-in MT5. Balance, equity, open positions, floating P&amp;L, remaining daily DD room and % used.</p>
+      </article>
+      <article class="card">
+        <h3>Lot size vs daily room</h3>
+        <p>Risk % and stop â†’ lots, then a hard check against remaining daily room so one oversized ticket doesnâ€™t nuke the challenge.</p>
+      </article>
+      <article class="card">
+        <h3>Works offline</h3>
+        <p>Lot Size, Challenge Limits, Pip Value, Risk:Reward, Margin, Fees/Break-even â€” all work with no MT5 connection.</p>
+      </article>
+      <article class="card">
+        <h3>Read-only. Always.</h3>
+        <p>PropGuard never places, modifies, or closes orders. Planning tool only â€” not financial advice.</p>
+      </article>
+    </section>
+
+    <section>
+      <h2>What it looks like</h2>
+      <p class="lead">Screenshots coming â€” placeholders only (no real logins or account numbers).</p>
+      <div class="shots">
+        <div class="shot">Screenshot placeholder<br/>Live MT5 / challenge room<br/>(no personal data)</div>
+        <div class="shot">Screenshot placeholder<br/>Lot Size + room warning<br/>(no personal data)</div>
+      </div>
+    </section>
+
+    <section class="card" style="margin-bottom:36px">
+      <h2 style="margin-top:0">Example (Eightcap-style $5k Â· 4% daily)</h2>
+      <p style="color:var(--muted);margin:0 0 10px">
+        Start $5,000 Â· daily 4% Â· total 8% Â· target 10%. Live equity $4,852.80 â†’ daily floor $4,800 Â·
+        remaining daily <strong style="color:var(--text)">$52.80</strong> Â· ~74% of daily room used Â·
+        total floor $4,600. 1% risk, 20 pip EURUSD stop â†’ <strong style="color:var(--text)">0.25 lots</strong>
+        ($50 risk). Max lots vs $52.80 room â‰ˆ 0.26.
+      </p>
+      <p style="color:var(--muted);margin:0">Warning when under 50% of daily room left. Firm preset starts with Eightcap $5k One Phase; more presets later.</p>
+    </section>
+
+    <section>
+      <h2>FAQ</h2>
+      <details open>
+        <summary>Windows only?</summary>
+        <p>Yes for this release â€” Windows .exe only. Mac is not included. If enough people ask, we will consider Mac later.</p>
+      </details>
+      <details>
+        <summary>Do I need MT5?</summary>
+        <p>No for the offline calculators. Live drawdown room and open-position risk need MetaTrader 5 open and logged into your challenge account on the same Windows PC.</p>
+      </details>
+      <details>
+        <summary>Which prop firms?</summary>
+        <p>Any firm you trade in MT5 on Windows (FTMO, FundedNext, Eightcap challenges, and similar). PropGuard does not log into firm websites. It only reads the local MT5 terminal. Preset defaults start with Eightcap $5k One Phase â€” edit Daily %, Total %, Target % for your rules.</p>
+      </details>
+      <details>
+        <summary>Can it trade for me?</summary>
+        <p>No. Read-only. It never places, modifies, or closes orders.</p>
+      </details>
+      <details>
+        <summary>Refunds?</summary>
+        <p>If the download fails or the app wonâ€™t run on a supported Windows setup, email nfstride1@gmail.com within 7 days with your order receipt. No refund for change-of-mind after download, or for trading losses.</p>
+      </details>
+      <details>
+        <summary>Is this financial advice?</summary>
+        <p>No. Challenge planning tool only. Rules change â€” verify against your firmâ€™s current agreement.</p>
+      </details>
+    </section>
+
+    <div class="cta-row" style="margin:32px 0">
+      <a class="btn" href="YOUR_STRIPE_PAYMENT_LINK">Get PropGuard â€” $29</a>
+    </div>
+
+    <footer>
+      Offline calculators + optional Live MT5 (read-only). Challenge planning only. Not financial advice.<br/>
+      Â© PropGuard Â· Windows desktop Â· Support: nfstride1@gmail.com
+    </footer>
+  </div>
+</body>
+</html>
