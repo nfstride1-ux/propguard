@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thanks - PropGuard</title>
+  <meta name="description" content="Payment received. Download PropGuard for Windows." />
+  <link rel="icon" href="favicon.png" />
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --card: #121821;
+      --line: #1e2836;
+      --text: #e8eef7;
+      --muted: #93a0b4;
+      --cyan: #2dd4bf;
+      --gold: #eab308;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, Segoe UI, system-ui, sans-serif;
+      background: radial-gradient(1200px 600px at 20% -10%, #14303a 0%, transparent 55%), var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    a { color: var(--cyan); }
+    .wrap { width: min(640px, 92vw); margin: 0 auto; }
+    header { padding: 28px 0 8px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-weight: 800; letter-spacing: 0.02em; text-decoration: none; color: var(--text); }
+    .logo span { color: var(--cyan); }
+    .badge {
+      font-size: 12px; color: var(--muted); border: 1px solid var(--line);
+      padding: 6px 10px; border-radius: 999px;
+    }
+    .card {
+      background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+      padding: 28px 24px; margin: 36px 0 24px;
+    }
+    h1 { font-size: clamp(1.6rem, 3.5vw, 2rem); line-height: 1.2; margin: 0 0 12px; }
+    .lead { color: var(--muted); margin: 0 0 18px; }
+    .note {
+      color: var(--muted); font-size: 0.95rem; margin: 0 0 22px;
+      padding: 12px 14px; border: 1px dashed var(--line); border-radius: 12px;
+    }
+    .btn {
+      display: inline-block; background: var(--cyan); color: #042f2e; font-weight: 800;
+      text-decoration: none; padding: 14px 22px; border-radius: 12px;
+    }
+    .btn:hover { filter: brightness(1.05); }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 8px; }
+    .meta { color: var(--muted); font-size: 0.9rem; margin: 18px 0 0; }
+    footer {
+      border-top: 1px solid var(--line); color: var(--muted); font-size: 0.85rem;
+      padding: 24px 0 40px; margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="logo" href="index.html">Prop<span>Guard</span></a>
+      <div class="badge">Windows | $29 one-time</div>
+    </header>
+
+    <section class="card">
+      <h1>Payment received - thank you</h1>
+      <p class="lead">
+        Your PropGuard order is confirmed. Download the Windows pack below, unzip, and run PropGuard.exe.
+      </p>
+      <p class="note">
+        If Stripe checkout was still paused for document review when you paid, you may not land on this page yet.
+        We will email the download from nfshold@gmail.com with your receipt.
+      </p>
+      <div class="cta-row">
+        <a class="btn" href="https://github.com/nfstride1-ux/propguard/releases/download/v1.0.0-windows/PropGuard-Windows.zip">Download PropGuard for Windows</a>
+      </div>
+      <p class="meta">
+        Zip is unsigned trial build - Windows SmartScreen may ask you to Allow / Run anyway.
+        Support: <a href="mailto:nfshold@gmail.com">nfshold@gmail.com</a> (include Stripe receipt).
+      </p>
+    </section>
+
+    <p style="color:var(--muted);font-size:0.95rem;margin:0 0 8px">
+      Back to <a href="index.html">PropGuard home</a>.
+    </p>
+
+    <footer>
+      Offline calculators + optional Live MT5 (read-only). Challenge planning only. Not financial advice.<br/>
+      (c) PropGuard | Windows desktop | Support: nfshold@gmail.com
+    </footer>
+  </div>
+</body>
+</html>
