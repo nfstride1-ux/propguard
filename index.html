@@ -55,13 +55,37 @@
       margin: 0; border-radius: 16px; border: 1px solid var(--line);
       background: #0f172a; overflow: hidden;
     }
+    .shot-media {
+      display: block; overflow: hidden; border-radius: 16px 16px 0 0;
+      background: #0b0f14; cursor: pointer;
+    }
     .shot img {
       display: block; width: 100%; height: auto;
+      object-fit: contain; object-position: top center;
+      border: 0; outline: 0;
+      transition: filter 0.15s ease;
     }
+    .shot-media:hover img, .shot img:hover { filter: brightness(1.08); }
     .shot figcaption {
       color: var(--muted); font-size: 0.85rem; padding: 10px 12px 12px; margin: 0;
       border-top: 1px solid var(--line);
     }
+    #lightbox {
+      display: none; position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0, 0, 0, 0.88); align-items: center; justify-content: center;
+      padding: 24px; cursor: zoom-out;
+    }
+    #lightbox.open { display: flex !important; }
+    #lightbox img {
+      max-width: min(1100px, 94vw); max-height: 90vh; width: auto; height: auto;
+      object-fit: contain; border-radius: 12px; box-shadow: 0 12px 48px rgba(0,0,0,0.55);
+      cursor: default; background: #0b0f14;
+    }
+    #lightbox-close {
+      position: absolute; top: 14px; right: 18px; border: 0; background: transparent;
+      color: #e8eef7; font-size: 28px; line-height: 1; cursor: pointer; padding: 8px 12px;
+    }
+    #lightbox-close:hover { color: var(--cyan); }
     details { border-top: 1px solid var(--line); padding: 14px 0; }
     details:first-of-type { border-top: 0; }
     summary { cursor: pointer; font-weight: 650; }
@@ -118,29 +142,41 @@
       <p class="lead">Real app UI with account numbers scrubbed. Live MT5 room and lot sizing first; more tools below.</p>
       <div class="shots">
         <figure class="shot">
-          <img src="shots/live-mt5.png" alt="PropGuard Live MT5 tab showing remaining daily drawdown room" width="640" height="690" loading="lazy" />
+          <div class="shot-media">
+            <img class="gallery-shot" src="shots/live-mt5.png" alt="PropGuard Live MT5 tab showing remaining daily drawdown room" width="640" height="690" loading="lazy"  />
+          </div>
           <figcaption>Live MT5 - remaining daily room and equity floor</figcaption>
         </figure>
         <figure class="shot">
-          <img src="shots/lot-size.png" alt="PropGuard Lot Size tab with recommended lots capped by daily room" width="640" height="687" loading="lazy" />
+          <div class="shot-media">
+            <img class="gallery-shot" src="shots/lot-size.png" alt="PropGuard Lot Size tab with recommended lots capped by daily room" width="640" height="687" loading="lazy"  />
+          </div>
           <figcaption>Lot Size - risk % to lots, capped by daily room</figcaption>
         </figure>
       </div>
       <div class="shots-row2">
         <figure class="shot">
-          <img src="shots/challenge-limits.png" alt="PropGuard Challenge Limits tab" width="320" height="346" loading="lazy" />
+          <div class="shot-media">
+            <img class="gallery-shot" src="shots/challenge-limits.png" alt="PropGuard Challenge Limits tab" width="320" height="346" loading="lazy"  />
+          </div>
           <figcaption>Challenge Limits</figcaption>
         </figure>
         <figure class="shot">
-          <img src="shots/pip-value.png" alt="PropGuard Pip Value tab" width="320" height="346" loading="lazy" />
+          <div class="shot-media">
+            <img class="gallery-shot" src="shots/pip-value.png" alt="PropGuard Pip Value tab" width="320" height="346" loading="lazy"  />
+          </div>
           <figcaption>Pip Value</figcaption>
         </figure>
         <figure class="shot">
-          <img src="shots/risk-reward.png" alt="PropGuard Risk Reward tab" width="320" height="340" loading="lazy" />
+          <div class="shot-media">
+            <img class="gallery-shot" src="shots/risk-reward.png" alt="PropGuard Risk Reward tab" width="320" height="340" loading="lazy"  />
+          </div>
           <figcaption>Risk:Reward</figcaption>
         </figure>
         <figure class="shot">
-          <img src="shots/margin.png" alt="PropGuard Margin tab" width="320" height="337" loading="lazy" />
+          <div class="shot-media">
+            <img class="gallery-shot" src="shots/margin.png" alt="PropGuard Margin tab" width="320" height="337" loading="lazy"  />
+          </div>
           <figcaption>Margin</figcaption>
         </figure>
       </div>
@@ -194,5 +230,49 @@
       (c) PropGuard | Windows desktop | Support: nfstride1@gmail.com
     </footer>
   </div>
+
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot preview" hidden>
+    <button type="button" id="lightbox-close" aria-label="Close">&times;</button>
+    <img id="lightbox-img" alt="" />
+  </div>
+  <script>
+  (function () {
+    var lb = document.getElementById("lightbox");
+    var lbImg = document.getElementById("lightbox-img");
+    var closeBtn = document.getElementById("lightbox-close");
+    function openLb(src, alt) {
+      lbImg.src = src;
+      lbImg.alt = alt || "";
+      lb.hidden = false;
+      lb.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+    function closeLb() {
+      lb.classList.remove("open");
+      lb.hidden = true;
+      lbImg.removeAttribute("src");
+      document.body.style.overflow = "";
+    }
+    document.querySelectorAll(".shot-media").forEach(function (el) {
+      el.addEventListener("click", function (e) {
+        e.preventDefault();
+        var img = el.querySelector("img");
+        if (!img) return;
+        openLb(img.currentSrc || img.src, img.alt);
+      });
+    });
+    closeBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      closeLb();
+    });
+    lb.addEventListener("click", function (e) {
+      if (e.target === lb) closeLb();
+    });
+    lbImg.addEventListener("click", function (e) { e.stopPropagation(); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && lb.classList.contains("open")) closeLb();
+    });
+  })();
+  </script>
 </body>
 </html>
