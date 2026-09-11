@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>PropGuard - Prop firm risk and lot calculator (Windows)</title>
   <meta name="description" content="Windows desktop app for prop traders. Live read-only MT5 drawdown room, lot size capped by remaining daily DD. Offline calculators always work. $29 one-time." />
-  <link rel="icon" href="favicon.ico" />
+  <link rel="icon" href="favicon.png" />
   <style>
     :root {
       --bg: #0b0f14;
@@ -49,10 +49,18 @@
     }
     .card h3 { margin: 0 0 8px; font-size: 1rem; }
     .card p { margin: 0; color: var(--muted); font-size: 0.95rem; }
-    .shots { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 18px 0 40px; }
+    .shots { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 18px 0 12px; }
+    .shots-row2 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 0 0 40px; }
     .shot {
-      aspect-ratio: 16/10; border-radius: 16px; border: 1px dashed #334155;
-      background: #0f172a; color: #64748b; display: grid; place-items: center; text-align: center; padding: 16px;
+      margin: 0; border-radius: 16px; border: 1px solid var(--line);
+      background: #0f172a; overflow: hidden;
+    }
+    .shot img {
+      display: block; width: 100%; height: auto;
+    }
+    .shot figcaption {
+      color: var(--muted); font-size: 0.85rem; padding: 10px 12px 12px; margin: 0;
+      border-top: 1px solid var(--line);
     }
     details { border-top: 1px solid var(--line); padding: 14px 0; }
     details:first-of-type { border-top: 0; }
@@ -62,7 +70,8 @@
       border-top: 1px solid var(--line); color: var(--muted); font-size: 0.85rem;
       padding: 24px 0 40px; margin-top: 20px;
     }
-    @media (max-width: 700px) { .shots { grid-template-columns: 1fr; } }
+    @media (max-width: 900px) { .shots-row2 { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 700px) { .shots, .shots-row2 { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -106,10 +115,34 @@
 
     <section>
       <h2>What it looks like</h2>
-      <p class="lead">Screenshots coming - placeholders only (no real logins or account numbers).</p>
+      <p class="lead">Real app UI with account numbers scrubbed. Live MT5 room and lot sizing first; more tools below.</p>
       <div class="shots">
-        <div class="shot">Screenshot placeholder<br/>Live MT5 / challenge room<br/>(no personal data)</div>
-        <div class="shot">Screenshot placeholder<br/>Lot Size + room warning<br/>(no personal data)</div>
+        <figure class="shot">
+          <img src="shots/live-mt5.png" alt="PropGuard Live MT5 tab showing remaining daily drawdown room" width="640" height="690" loading="lazy" />
+          <figcaption>Live MT5 - remaining daily room and equity floor</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="shots/lot-size.png" alt="PropGuard Lot Size tab with recommended lots capped by daily room" width="640" height="687" loading="lazy" />
+          <figcaption>Lot Size - risk % to lots, capped by daily room</figcaption>
+        </figure>
+      </div>
+      <div class="shots-row2">
+        <figure class="shot">
+          <img src="shots/challenge-limits.png" alt="PropGuard Challenge Limits tab" width="320" height="346" loading="lazy" />
+          <figcaption>Challenge Limits</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="shots/pip-value.png" alt="PropGuard Pip Value tab" width="320" height="346" loading="lazy" />
+          <figcaption>Pip Value</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="shots/risk-reward.png" alt="PropGuard Risk Reward tab" width="320" height="340" loading="lazy" />
+          <figcaption>Risk:Reward</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="shots/margin.png" alt="PropGuard Margin tab" width="320" height="337" loading="lazy" />
+          <figcaption>Margin</figcaption>
+        </figure>
       </div>
     </section>
 
